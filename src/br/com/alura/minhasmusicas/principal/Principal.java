@@ -4,6 +4,8 @@ import br.com.alura.minhasmusicas.MinhasPreferidas;
 import br.com.alura.minhasmusicas.Musica;
 import br.com.alura.minhasmusicas.Podcast;
 
+import java.io.File;
+
 public class Principal {
     public static void main(String[] args) {
         Musica minhaMusica = new Musica();
