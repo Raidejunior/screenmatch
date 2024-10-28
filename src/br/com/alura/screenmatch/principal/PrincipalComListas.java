@@ -5,6 +5,8 @@ import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
@@ -28,5 +30,22 @@ public class PrincipalComListas {
             }
         }
         lista.forEach(item -> System.out.println(item));
+
+        ArrayList<String> buscaPorArtistas = new ArrayList<>();
+        buscaPorArtistas.add("Adam Sandler");
+        buscaPorArtistas.add("Raide");
+        buscaPorArtistas.add("Maísa");
+        System.out.println(buscaPorArtistas);
+
+        Collections.sort(buscaPorArtistas);
+        System.out.println("Artistas ordenados: ");
+        System.out.println(buscaPorArtistas);
+        Collections.sort(lista);
+        System.out.println("Lista ordenada por nome: ");
+        System.out.println(lista);
+        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println("Lista ordenada por ano");
+        System.out.println(lista);
+
     }
 }
