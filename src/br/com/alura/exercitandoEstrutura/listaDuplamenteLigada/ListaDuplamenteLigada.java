@@ -24,8 +24,9 @@ public class ListaDuplamenteLigada {
         if( this.totalDeElementos == 0) {
             adicionaNoComeco(elemento);
         } else {
-            Celula nova = new Celula(elemento, null);
+            Celula nova = new Celula(elemento);
             this.ultima.setProximo(nova);
+            nova.setAnterior(this.ultima);
             this.ultima = nova;
             this.totalDeElementos++;
         }
@@ -55,19 +56,18 @@ public class ListaDuplamenteLigada {
     public void remove(int posicao) {
         if(totalDeElementos == 0 || posicao > totalDeElementos) {
             throw new IllegalArgumentException("Não há elementos para retirar ou posição não existe na lista.");
+        } else if (posicao == totalDeElementos-1) {
+            this.removeDoFim();
+        } else {
+            Celula anterior = this.pegaCelula(posicao - 1);
+            Celula atual = anterior.getProximo();
+            Celula proxima = atual. getProximo();
+
+            anterior.setProximo(proxima);
+            proxima.setAnterior(anterior);
+
+            totalDeElementos--;
         }
-
-        Celula antesDaAtual = this.primeira;
-
-        for(int i = 0; i < posicao - 1; i++) {
-            antesDaAtual = antesDaAtual.getProximo();
-        }
-
-        Celula proximoElementoAoRetirado = antesDaAtual.getProximo();
-        proximoElementoAoRetirado = proximoElementoAoRetirado.getProximo();
-        antesDaAtual.setProximo(proximoElementoAoRetirado);
-
-        totalDeElementos--;
     }
 
     public void removeDoComeco() {
@@ -83,11 +83,32 @@ public class ListaDuplamenteLigada {
         }
     }
 
+    public void removeDoFim() {
+        if(this.totalDeElementos == 1) {
+            this.removeDoComeco();
+        } else {
+            Celula penultima = this.ultima.getAnterior();
+            penultima.setProximo(null);
+            this.ultima = penultima;
+            totalDeElementos--;
+        }
+    }
+
     public int tamanho() {
         return this.totalDeElementos;
     }
 
-    public boolean contem(Object o) { return false;}
+    public boolean contem(Object elemento) {
+        Celula atual = this.primeira;
+
+        while(atual != null) {
+            if(atual.getElemento().equals(elemento)) {
+                return true;
+            }
+            atual = atual.getProximo();
+        }
+        return false;
+    }
 
     private boolean posicaoOcupada(int posicao) {
         return posicao >= 0 && posicao < this.totalDeElementos;

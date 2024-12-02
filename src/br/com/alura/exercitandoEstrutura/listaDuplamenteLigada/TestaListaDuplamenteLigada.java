@@ -28,7 +28,12 @@ public class TestaListaDuplamenteLigada {
         System.out.println(ListaDuplamenteLigada);
 
         ListaDuplamenteLigada.remove(1);
+        System.out.println("Removendo indice 1: " + ListaDuplamenteLigada);
+
+        ListaDuplamenteLigada.removeDoFim();
         System.out.println(ListaDuplamenteLigada);
 
+        System.out.println(ListaDuplamenteLigada.contem("Raide"));
+        System.out.println(ListaDuplamenteLigada.contem("Rafaela"));
     }
 }
