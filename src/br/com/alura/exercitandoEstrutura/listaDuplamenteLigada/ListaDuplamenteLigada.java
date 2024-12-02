@@ -39,8 +39,11 @@ public class ListaDuplamenteLigada {
             this.adiciona(elemento);
         } else {
             Celula anterior = this.pegaCelula(posicao - 1);
-            Celula nova = new Celula(elemento, anterior.getProximo());
+            Celula proxima = anterior.getProximo();
+            Celula nova = new Celula(elemento, proxima);
+            nova.setAnterior(anterior);
             anterior.setProximo(nova);
+            proxima.setAnterior(nova);
             totalDeElementos++;
         }
     }
