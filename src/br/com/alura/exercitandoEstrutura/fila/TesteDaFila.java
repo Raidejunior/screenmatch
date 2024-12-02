@@ -18,25 +18,28 @@ public class TesteDaFila {
         System.out.println("Fila atual: " + fila);
 
         // Usando agora a fila do java!!
+        // Para as filas, usamos add para adicionar e pool para remover!
+        Queue<String> filaDoJava = new LinkedList<String>();
+        filaDoJava.add("Mauricio");
+        filaDoJava.add("Guilherme");
 
-        LinkedList<String> filaComLista = new LinkedList<>();
-        filaComLista.push("Mauricio");
-        filaComLista.push("Guilherme");
+        System.out.println("Com lista: " + filaDoJava);
 
-        System.out.println("Com lista: " + filaComLista);
+        filaDoJava.add("Raide");
+        filaDoJava.add("Maísa");
 
-        filaComLista.push("Raide");
-        filaComLista.push("Maísa");
+        String x2 = filaDoJava.remove();
+        System.out.println("Elemento Retirado com remove(Lança erro se a lista for vazia): " + x2);
+        System.out.println("Elemento Retirado com pool(Retorna null se a lista for vazia): " + x2);
+        System.out.println("Fila atual com lista: " + filaDoJava);
 
-        String x2 = filaComLista.remove();
-        System.out.println("Retirado com remove(Lança erro se a lista for vazia): " + x2);
-        System.out.println("Retirado com pool(Retorna null se a lista for vazia): " + x2);
-        System.out.println("Fila atual com lista: " + filaComLista);
+        filaDoJava.add("Rafaela");
 
-        filaComLista.push("Rafaela");
+        System.out.println("Último elemento da fila com lista com element(Lança erro se a lista for vazia): " + filaDoJava.element());
+        System.out.println("Último elemento da fila com lista com peek(Retorna null se a lista for vazia): " + filaDoJava.peek());
 
-        System.out.println("Último elemento da fila com lista com element(Lança erro se a lista for vazia): " + filaComLista.element());
-        System.out.println("Último elemento da fila com lista com peek(Retorna null se a lista for vazia): " + filaComLista.peek());
+        System.out.println(filaDoJava);
+
 
     }
 }
