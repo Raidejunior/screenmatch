@@ -19,7 +19,7 @@ public class TesteDaFila {
 
         // Usando agora a fila do java!!
         // Para as filas, usamos add para adicionar e pool para remover!
-        Queue<String> filaDoJava = new LinkedList<String>();
+        Queue<String> filaDoJava = new LinkedList<>();
         filaDoJava.add("Mauricio");
         filaDoJava.add("Guilherme");
 
