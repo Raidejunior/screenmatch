@@ -1,7 +1,22 @@
 package br.com.alura.screenmatch.exercicios;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serial;
+
 public class Titulo implements Comparable<Titulo> {
+    @SerializedName("Title")
     private String nome;
+    @SerializedName("Year")
+    private int anoDeLancamento;
+    private boolean incluidoNoPlano;
+    private double somaDasAvaliacoes;
+    private int totalDeAvaliacoes;
+    private int duracaoEmMinutos;
+
+    public int getAnoDeLancamento() {
+        return anoDeLancamento;
+    }
 
     public Titulo(String nome) {
         this.nome = nome;
@@ -21,6 +36,7 @@ public class Titulo implements Comparable<Titulo> {
     public String toString() {
         return String.format("""
                 Nome do Titulo: %s,
-                """, this.getNome());
+                Ano de lançamento: %d
+                """, this.getNome(), this.getAnoDeLancamento());
     }
 }
